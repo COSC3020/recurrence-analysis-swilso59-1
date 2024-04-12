@@ -105,4 +105,6 @@ As \(n\) becomes very large, the dominating term is the \(n^{5}\) component, and
 
 Therefore, we can conclude that the asymptotic complexity of the given recursive procedure is $\(O(n^5))$. This is because, in big $(O)$ notation, we are interested in the dominant term that grows the fastest as the input size $(n\)$ becomes large, and in this case, it is $(n^{5})$.
 
+$T(n) \in O\left(n^{5}\right)$
+
 I reviewed my repository from last semester and recieved help from the TA. 
