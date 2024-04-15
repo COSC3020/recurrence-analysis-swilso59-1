@@ -37,10 +37,11 @@ might help with the notation for mathematical expressions.
 In this function we:
 - 3 recursive calls
 - Each call has an input of $\frac{n}{3}$
-- There are $(n^{5})$ one for each of the nested loops 
+- There are $(n^{5})$ one for each of the nested loops
+- Our base case is when $n \leq 1$  
 
 The recursive procedure can be analyzed as follows:
-- $T\left(n\right) = 3T\left(\frac{n}{3}\right) + n^{5}$
+- $T\left(n\right) = 3T\left(\frac{n}{3}\right) + n^{5} + c$
 - $3\left(3T\left(\frac{n}{9}\right) + \left(\frac{n}{3}\right)^5\right) = 9T\left(\frac{n}{9}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
 - $9\left(3T\left(\frac{n}{27}\right) + \left(\frac{n}{9}\right)^5\right) = 27T\left(\frac{n}{27}\right) + \left(\frac{n^5}{9^4}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
 - $27\left(3T\left(\frac{n}{81}\right) + \left(\frac{n}{27}\right)^5\right) = 81T\left(\frac{n}{81}\right) + \left(\frac{n^5}{27^4}\right) + \left(\frac{n^5}{9^4}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
