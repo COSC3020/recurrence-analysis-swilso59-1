@@ -38,39 +38,41 @@ In this function we:
 - 3 recursive calls
 - Each call has an input of $\frac{n}{3}$
 - There are $(n^{5})$ one for each of the nested loops
-- Our base case is when $n \leq 1$  
+- Our base case is when $T(n) =1 whem n \leq 1$  
 
 The recursive procedure can be analyzed as follows:
-- $T\left(n\right) = 3T\left(\frac{n}{3}\right) + n^{5} + c$
-- $3\left(3T\left(\frac{n}{9}\right) + \left(\frac{n}{3}\right)^5\right) = 9T\left(\frac{n}{9}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
+- $T\left(n\right) = 3T\left(\frac{n}{3}\right) + n^{5} + c$ (We can ignore the $c$)
+- $3\left(3T\left(\frac{n}{9}\right) + \left(\frac{n}{3}\right)^5\right) +n^{5} = 9T\left(\frac{n}{9}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
 - $9\left(3T\left(\frac{n}{27}\right) + \left(\frac{n}{9}\right)^5\right) = 27T\left(\frac{n}{27}\right) + \left(\frac{n^5}{9^4}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
 - $27\left(3T\left(\frac{n}{81}\right) + \left(\frac{n}{27}\right)^5\right) = 81T\left(\frac{n}{81}\right) + \left(\frac{n^5}{27^4}\right) + \left(\frac{n^5}{9^4}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
 
 $\Rightarrow 3^4T\left(\frac{n}{3^4}\right) + \left(\frac{n^5}{3^{12}}\right) + \left(\frac{n^5}{3^8}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
 
-Letting $n = \log_3(n)$, the solution becomes:
+Letting $i = \log_3(n)$, the solution becomes:
 
 $\Rightarrow T(n) = 3^4T\left(\frac{n}{3^4}\right) + \left(\frac{n^5}{3^{12}}\right) + \left(\frac{n^5}{3^8}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
 
 Can be written in the form of a geometric series:
 
-- $\sum_{i=0}^n (a)^i = \frac{a^{n+1} - 1}{a-1}$
+- $\sum_{j=0}^{i} a^{i} = \frac{a^{n+1} - 1}{a-1}$
 
-$\Rightarrow T(n) =  3^iT\left(\frac{n}{3^i}\right) + \sum_{i=0}^{\log_3(n)} \left(\frac{n^5}{3^{4i}}\right)$
+$\Rightarrow T(n) =  3^iT\left(\frac{n}{3^i}\right) + \sum_{j=0}^{i = \log_3{n}} \left(\frac{n^5}{3^{4i}}\right)$
 
-- $3^{\log_3(n)}T(1) + \sum_{i=0}^{\log_3(n)} \left(\frac{n^5}{3^{4i}}\right)$
+- $3^{\log_3(n)}T(1) + \sum_{j=0}^{i = \log_3(n)} \left(\frac{n^5}{3^{4i}}\right)$
 
 - $T(n) = n + n^{5}\sum_{i=0}^{\log_3(n)}\left(\frac{1}{3^{4i}}\right)$
 
 - $T(n) = n + n^{5}\sum_{i=0}^{\log_3(n)}\left(\frac{1}{3^{4}}\right)^{i}$
 
-- $a = \left(\frac{1}{3^{4}}\right)$
-
-- $n = \log_3(9n)$
+- $a = \left(\frac{n}{3^{i}}\right)$
+  
+- $n = 3i$
+  
+- $i = \log_3(n)$ When $T(n) \leq 1$ 
 
 This gives us:
 
-- $\sum_{i=0}^{\log_3(n)}\left(\frac{1}{3^4}\right)^i = \frac{\left(\frac{1}{3^4}\right)^{\log_3(n)+1} - 1}{\frac{1}{3^4} - 1} $
+- $\sum_{j=0}^{\log_3(n)}\left(\frac{1}{3^4}\right)^i = \frac{\left(\frac{1}{3^4}\right)^{\log_3(n)+1} - 1}{\frac{1}{3^4} - 1} $
 
 - $\frac{\left(\left(\frac{1}{3^4}\right)^{\log_3(n)} \cdot \frac{1}{3^4}\right) - 1}{\frac{1}{3^4} - 1}$
 
